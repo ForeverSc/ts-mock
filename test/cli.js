@@ -5,7 +5,7 @@ const fs = require('fs')
 
 describe('run cli', function () {
   it('ts-mock -f test -o out', function (done) {
-    exec('node ./index.js -f test -o out', function (error) {
+    exec('ts-mock -f test -o out', function (error) {
       if (error) {
         throw error
       }

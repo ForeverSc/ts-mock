@@ -6,7 +6,7 @@ a tool to generage mock json data by typescript interface file
 npm i -D ts-mock
 ```
 
-# Use
+# Usage
 ```
 ts-mock -f test -o out
 ```
@@ -52,4 +52,17 @@ test.json
     "name": "quis commodo occaecat"
   }
 }
+```
+
+# Commands
+```
+ Usage: ts-mock [options]
+
+  Options:
+
+    -V, --version              output the version number
+    -f, --filepath <filepath>  filepath
+    -o, --outdir <outdir>      outdir
+    -t, --type <type>          type: all | schema | json
+    -h, --help                 output usage information
 ```

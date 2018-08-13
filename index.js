@@ -23,27 +23,33 @@ function genSchemaFromTs (tsFilePath) {
   return schema
 }
 
-function genMockData (filName, outdir, schema) {
+function genMockData (filepath, outdir, schema) {
   return new Promise((resolve, reject) => {
     JSF.resolve(schema.definitions).then(function (object) {
       resolve(object)
-      mkdirAndCreatFile(path.resolve(outdir, 'mock'), filName, object)
+      const filename = path.basename(filepath, '.ts')
+      mkdirAndCreatFile(path.resolve(outdir, 'mock'), filename, object)
     })
   })
 }
 
-function genSchemaFile (outdir, filename) {
-  const schema = genSchemaFromTs(`${filename}.ts`)
+function genSchemaFile (filepath, outdir, isCreateSchema = true) {
+  const filename = path.basename(filepath, '.ts')
+  const schema = genSchemaFromTs(filepath)
 
-  mkdirAndCreatFile(path.resolve(outdir, 'schema'), `${filename}-schema`, schema.definitions)
+  if (isCreateSchema) {
+    mkdirAndCreatFile(
+      path.resolve(outdir, 'schema'),
+      `${filename}-schema`,
+      schema.definitions
+    )
+  }
 
   return schema
 }
 
 function genSchemaFileAndMockData(filepath, outdir) {
-  const filename = path.basename(filepath, '.ts')
-
-  genMockData(filepath, outdir, genSchemaFile(outdir, filename))
+  genMockData(filepath, outdir, genSchemaFile(filepath, outdir))
 }
 
 exports.genSchemaFileAndMockData = genSchemaFileAndMockData

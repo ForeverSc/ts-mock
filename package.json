@@ -7,10 +7,13 @@
     "ts-mock": "./bin/ts-mock"
   },
   "scripts": {
-    "dev": "node index.js -f test -o out",
-    "debug": "node --inspect-brk index.js -f test -o out",
+    "dev": "ts-mock -f test -o out",
+    "debug": "node --inspect-brk ./bin/ts-mock -f test/test -o out",
     "test": "mocha",
-    "bin": "ts-mock -f test -o out"
+    "bin": "ts-mock -f test -o out",
+    "all": "ts-mock -f test -o out -t all",
+    "schema": "ts-mock -f test -o out -t schema",
+    "mock": "ts-mock -f test -o out -t mock"
   },
   "keywords": [
     "typescript",
