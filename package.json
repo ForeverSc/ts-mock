@@ -1,12 +1,16 @@
 {
   "name": "ts-mock",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "a tool to mock data by typescript interface",
   "main": "index.js",
+  "bin": {
+    "ts-mock": "./bin/ts-mock"
+  },
   "scripts": {
     "dev": "node index.js -f test -o out",
     "debug": "node --inspect-brk index.js -f test -o out",
-    "test": "mocha"
+    "test": "mocha",
+    "bin": "ts-mock -f test -o out"
   },
   "keywords": [
     "typescript",

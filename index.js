@@ -1,18 +1,7 @@
 const path = require('path')
 const TJS = require('typescript-json-schema')
 const JSF = require('json-schema-faker')
-const commander = require('commander')
 const { mkdirAndCreatFile } = require('./lib/util')
-
-commander
-  .version('0.0.1')
-  .option('-f, --filepath <filepath>', 'filepath')
-  .option('-o, --outdir <outdir>', 'outdir')
-  .parse(process.argv)
-
-const filepath = commander.filepath
-const filename = path.basename(filepath, '.ts')
-const outdir = commander.outdir || process.cwd()
 
 function genSchemaFromTs (tsFilePath) {
   const settings = {
@@ -34,7 +23,7 @@ function genSchemaFromTs (tsFilePath) {
   return schema
 }
 
-function genMockData (filName, schema) {
+function genMockData (filName, outdir, schema) {
   return new Promise((resolve, reject) => {
     JSF.resolve(schema.definitions).then(function (object) {
       resolve(object)
@@ -51,7 +40,12 @@ function genSchemaFile (outdir, filename) {
   return schema
 }
 
-genMockData(filepath, genSchemaFile(outdir, filename))
+function genSchemaFileAndMockData(filepath, outdir) {
+  const filename = path.basename(filepath, '.ts')
 
+  genMockData(filepath, outdir, genSchemaFile(outdir, filename))
+}
+
+exports.genSchemaFileAndMockData = genSchemaFileAndMockData
 exports.genMockData = genMockData
 exports.genSchemaFile = genSchemaFile
