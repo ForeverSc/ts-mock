@@ -1,6 +1,6 @@
 {
   "name": "ts-mock",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "a tool to mock data by typescript interface",
   "main": "index.js",
   "bin": {
@@ -33,12 +33,11 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "fast-json-stringify": "^1.5.4",
-    "json-schema-faker": "^0.5.0-rc15",
     "mocha": "^5.2.0"
   },
   "dependencies": {
     "typescript-json-schema": "^0.24.1",
+    "json-schema-faker": "^0.5.0-rc15",
     "commander": "^2.16.0",
     "mkdirp": "^0.5.1"
   },
