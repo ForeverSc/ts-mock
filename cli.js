@@ -2,20 +2,27 @@ const commander = require('commander')
 const {
   genSchemaFileAndMockData,
   genMockData,
-  genSchemaFile
+  genSchemaFile,
+  genMockDataByExistSchemaFile
 } = require('./index');
 
 function run() {
   commander
     .version('0.0.1')
     .option('-f, --filepath <filepath>', 'filepath')
-    .option('-o, --outdir <outdir>', 'outdir')
-    .option('-t, --type <type>', 'type')
+    .option('-o, --outdir <outdir>', 'outdir | mean outpath when gj')
+    .option('-t, --type <type>', 'generate types: all | schema | mock')
+    .option('-g, --genJson', 'generate json by exist schema')
     .parse(process.argv)
 
   const filepath = commander.filepath
   const outdir = commander.outdir || process.cwd()
   const type = commander.type || 'all'
+
+  if (commander.genJson) {
+    genMockDataByExistSchemaFile(filepath, outdir)
+    return
+  }
 
   switch (type) {
     case 'all':

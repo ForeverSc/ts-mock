@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "ts-mock -f test -o out",
+    "devg": "ts-mock -g -f test/out/schema/interface-schema.json -o test/out/mock/interface.json",
     "debug": "node --inspect-brk ./bin/ts-mock -f test/test -o out",
     "test": "mocha",
     "bin": "ts-mock -f test -o out",

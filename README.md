@@ -1,5 +1,5 @@
 # Typescript Mock
-a tool to generage mock json data by typescript interface file
+a tool to generate mock json data by typescript interface file
 
 # Install
 ```
@@ -7,6 +7,7 @@ npm i -D ts-mock
 ```
 
 # Usage
+## Basic
 ```
 ts-mock -f test -o out
 ```
@@ -54,15 +55,21 @@ test.json
 }
 ```
 
+## Generate JSON File With Exist Schema File
+```
+ts-mock -g -f test/out/schema/interface-schema.json -o test/out/mock/interface.json
+```
+
 # Commands
 ```
- Usage: ts-mock [options]
+Usage: ts-mock [options]
 
   Options:
 
     -V, --version              output the version number
     -f, --filepath <filepath>  filepath
-    -o, --outdir <outdir>      outdir
-    -t, --type <type>          type: all | schema | json
-    -h, --help                 output usage information
+    -o, --outdir <outdir>      outdir | mean outpath when gj
+    -t, --type <type>          generate types: all | schema | mock
+    -g, --genJson              generate json by exist schema
+    -h, --help                 output usage informationnformation
 ```
