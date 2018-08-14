@@ -1,6 +1,6 @@
 {
   "name": "ts-mock",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "a tool to mock data by typescript interface",
   "main": "index.js",
   "bin": {
